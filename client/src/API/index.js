@@ -6,10 +6,6 @@ const BRANCH_NAME = process.env.BRANCH_NAME || `master`;
 const GITHUB_URL = `https://api.github.com/repos/${GITHUB_USERNAME}/${REPO_NAME}`;
 
 
-export const checkFileType = () => {
-    
-}
-
 export const enlistFileFolders = async () => {
     let url = GITHUB_URL + `/git/trees/${BRANCH_NAME}?recursive=1`;
     try

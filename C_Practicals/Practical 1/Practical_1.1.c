@@ -7,16 +7,16 @@ int main()
     long long cno;
     float per;
 
-    printf("Enter Name = ");
+    printf("Enter Name : ");
     scanf("%s", name);
 
-    printf("Enter Age = ");
+    printf("Enter Age : ");
     scanf("%d", &age);
 
-    printf("Enter Contact Number = ");
+    printf("Enter Contact Number : ");
     scanf("%lld", &cno);
 
-    printf("Enter Percentage = ");
+    printf("Enter Percentage : ");
     scanf("%f", &per);
 
     printf("\n************************");

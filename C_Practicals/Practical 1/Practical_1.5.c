@@ -13,9 +13,9 @@ int main()
 
     printf("\n");
 
-    result = (m + n) / m * n;
+    result = (m * n) / (m + n);
 
-    printf("Result is = %d", result);
+    printf("Number of days taken overall = %d", result);
 
     return 0;
 }

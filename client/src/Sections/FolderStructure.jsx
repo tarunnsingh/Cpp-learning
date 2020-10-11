@@ -1,6 +1,5 @@
 import React, {useEffect, useState } from 'react';
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import CodeViewer from "../Components/CodeViewer/CodeViewer";
 import { enlistFileFolders, extractDataFromFile } from "../API/index"
 
 const FolderStruct = (props) => {
@@ -21,6 +20,15 @@ const fetchCodeData = async function(fileURL) {
 }
 
 
+const checkFileType = (path) => {
+    const extension = path.substr(path.lastIndexOf('.') + 1);
+    if(extension === "cpp")
+        return true;
+    else 
+        return false;
+}
+
+
 return (
     <div>
     <h2>Folder Structure Here</h2>
@@ -34,9 +42,7 @@ return (
 
     <div>
         {singleCode ? 
-    <SyntaxHighlighter language="cpp" style={docco}>
-      {singleCode}
-    </SyntaxHighlighter> : null}
+        <CodeViewer props={singleCode}/> : null}
     </div>
     </div>
 )
