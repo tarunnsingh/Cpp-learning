@@ -6,8 +6,8 @@ const BRANCH_NAME = process.env.BRANCH_NAME || `master`;
 const GITHUB_URL = `https://api.github.com/repos/${GITHUB_USERNAME}/${REPO_NAME}`;
 
 
-export const enlistFileFolders = async () => {
-    let url = GITHUB_URL + `/git/trees/${BRANCH_NAME}?recursive=1`;
+export const enlistFolders = async () => {
+    let url = GITHUB_URL + `/git/trees/${BRANCH_NAME}`;
     try
     {
         const folderList = await axios.get(url, {
@@ -21,6 +21,33 @@ export const enlistFileFolders = async () => {
 
     }
     catch(err){
+        console.log(err);
+    }
+}
+
+
+
+export const extractFileList = async(listURL) => {
+    try{
+        const rawJSON = await axios(listURL, {
+            headers:{
+                "Accept" : "application/vnd.github.3.raw"
+            } 
+        })
+        console.log("RAW JSON: ", rawJSON)
+        const fileListURL = rawJSON.data.url;
+         try{
+            const rawList = await axios(fileListURL, {
+                headers:{
+                    "Accept" : "application/vnd.github.3.raw"
+                } 
+            })
+            console.log("RAW LIST: ", rawList)
+            return rawList.data.tree;
+         } catch(err){
+            console.log(err);
+        }
+    }catch (err){
         console.log(err);
     }
 }
