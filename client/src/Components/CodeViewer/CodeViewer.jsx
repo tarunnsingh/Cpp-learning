@@ -24,8 +24,8 @@ export default (props) => {
     }
 
     useEffect(()=>{
-        setCode(props.props); 
-    }, [props.props])
+        setCode(props.code); 
+    }, [props.code])
 
     return(
         <div>
